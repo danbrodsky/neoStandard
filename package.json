@@ -4,7 +4,7 @@
   "description": "graphing tool for stdlib infrastructure using Neo4j",
   "main": "index.js",
   "scripts": {
-    "dev": "babel-node --presets latest index.js",
+    "dev": "babel-node --presets latest main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
