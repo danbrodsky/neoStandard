@@ -1,0 +1,19 @@
+{
+  "name": "neostandard",
+  "version": "1.0.0",
+  "description": "graphing tool for stdlib infrastructure using Neo4j",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danbrodsky/neoStandard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danbrodsky/neoStandard/issues"
+  },
+  "homepage": "https://github.com/danbrodsky/neoStandard#readme"
+}
