@@ -1,5 +1,10 @@
 # neoStandard
-Neo4j graphing tool of stdlib microservice infrastructure
+
+_Neo4j graphing tool of stdlib microservice infrastructure_
+
+
+### __Example graph:__
+![Image of Example StdLib Microservices Graph](example/exampleGraph.png)
 
 The goal of this project is to create a more user-friendly interface for the monitoring and deployment of new microservice APIs on StdLib by converting existing StdLib user infrastructure to a graph representation using Neo4j. This project was originally started during NWHacks 2019, and is currently on standby due to limitations with the StdLib developer API.
 
