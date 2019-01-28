@@ -38,11 +38,23 @@ class GraphDriver {
         })
     }
 
-    createNode(nodeName, nodeType, nodeData) {
-        return new Promise(resolve => {
+    async createNode(nodeName, nodeType, nodeData) {
+        let exists = await this.serviceExists(nodeName);
+        if (!exists){
             this.sendQuery(
                 `CREATE (:${nodeType} {name: $name}) RETURN "${nodeName}"`,
                 {name: nodeName}
+            ).then(() => {return;})
+        }
+    }
+
+    createCommonRelation(fromNode, toNode, relation) {
+
+        return new Promise(resolve => {
+            this.sendQuery(
+                `MATCH (a),(b)
+        WHERE a.name = "${fromNode}" AND b.name = "${toNode}"
+        CREATE (a)-[:${relation}]->(b)`
             ).then(() => resolve());
         });
     }
@@ -58,13 +70,36 @@ class GraphDriver {
         });
     }
 
-    createFunction(fn, type, data) {
-        return new Promise(resolve => {
+    async createFunction(fn, type, data) {
+        let exists = await this.functionExists(fn, data.service);
+        if (!exists){
             this.createNode(fn, type, "").then(() => {
                 this.createRelation(fn, data.service, "IN").then(() => {
-                    resolve();
+                    return
                 })
             })
+        }
+        return
+    }
+
+    async serviceExists(nodeName) {
+        let result = await this.sendQuery(
+            `MATCH (n) WHERE n.name = "${nodeName}" RETURN count(n) > 0 as n`
+        );
+        return new Promise((resolve) => {
+            resolve(result.records[0]._fields[0]);
+        })
+    }
+
+    async functionExists(fn, srv) {
+
+        let result = await this.sendQuery(
+            `MATCH (n:function)-[:IN]->(s:service) WHERE n.name = "${fn}"
+         AND s.name = "${srv}"
+        RETURN count(n) > 0 as n`
+        );
+        return new Promise((resolve) => {
+            resolve(result.records[0]._fields[0]);
         })
     }
 }

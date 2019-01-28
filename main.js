@@ -11,7 +11,7 @@ import StdlibParser from './StdlibParser.js';
 function main() {
 
     var parser = new StdlibParser();
-    parser.parseAll();
+    parser.parseAll().then(() => { return })
 }
 
 main();
