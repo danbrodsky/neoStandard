@@ -9,3 +9,8 @@ The goal of this project is to create a more user-friendly interface for the mon
 * [ ] Add details for 3rd-party server interactions
 * [ ] Create a quick deployment API for creating new microservices as nodes in Neo4j
 * [ ] Convert project to a deployable API for StdLib
+
+
+### __Development Checklist:__
+* [ ] Add automated deployment and test scripts
+* [ ] Convert the existing codebase to Go (JavaScript async queuing is a bad fit for this project)
